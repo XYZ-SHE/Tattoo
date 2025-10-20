@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ink & Insight: The Consult</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main id="welcome-page" class="page">
+        <div id="chat-bubble-container">
+            <p class="artist-message">Hey, welcome to my tattoo studio.</p>
+            <p class="artist-message">I'm guessing you're here to talk about some ink, right?</p>
+            <p class="artist-message">It's a big decision. Before we get started, I really need to get inside your head a bit.</p>
+            <p class="artist-message">So, can you show me what you're thinking of? <span>A finished design, a reference pic, even a quick sketch on a napkin... anything works.</span></p>
+            <label for="file-upload" id="upload-label">[ Upload your Design ]</label>
+            <input type="file" id="file-upload" accept="image/*">
+        </div>
+    </main>
+
+    <main id="consultation-page" class="page hidden">
+        <div id="image-column"><img id="tattoo-preview-image" src="" alt="Tattoo Preview"></div>
+        <div id="dialogue-column">
+            <p id="question-text"></p>
+            <textarea id="answer-input" placeholder="Type your thoughts here..."></textarea>
+            <div id="progress-container"><div id="progress-bar"></div></div>
+            <button id="next-btn">Continue</button>
+        </div>
+    </main>
+    
+    <main id="ar-page" class="page hidden">
+        <div id="ar-left-column">
+            <div id="ar-container">
+                <video id="webcam-feed" autoplay playsinline></video>
+                <img id="draggable-tattoo-image" src="" alt="Draggable Tattoo">
+            </div>
+            <div id="ar-controls" class="ar-element hidden">
+                <div class="control-group"><label for="scale-slider">Scale</label><input type="range" id="scale-slider" min="20" max="400" value="150"></div>
+                <div class="control-group"><label for="rotate-slider">Rotate</label><input type="range" id="rotate-slider" min="-180" max="180" value="0"></div>
+                <button id="tryon-done-btn">[ I've got the spot ]</button>
+            </div>
+        </div>
+        <div id="ar-right-column">
+             <div id="reflection-container">
+                 <div id="initial-reflection-content" class="ar-element hidden">
+                     <p id="ar-initial-dialogue"><strong>Instructions:</strong><br>Alright, take your time. Use the controls on the left to get the piece exactly where you want it. When you're happy with the placement, hit that "[ I've got the spot ]" button.</p>
+                 </div>
+                 <div id="future-reflection-content" class="ar-element hidden">
+                     <p id="ar-dialogue">Looks cool on you. Now... how do you think this tattoo will look in, say, fifty years?</p>
+                     <div id="filter-buttons">
+                         <button data-choice="I think it will age gracefully with time">[ It will age gracefully with time ]</button>
+                         <button data-choice="It might get marked by accidents or life events">[ It might get marked by accidents or life events ]</button>
+                         <button data-choice="I might choose to have it lasered off">[ I might choose to have it lasered off ]</button>
+                     </div>
+                     <button id="finish-btn" class="ar-element hidden">[ Finish Consultation ]</button>
+                 </div>
+             </div>
+        </div>
+    </main>
+
+    <main id="summary-page" class="page hidden">
+        <div id="summary-left-column">
+            <img id="summary-image" src="" alt="Final Tattoo Design">
+        </div>
+        <div id="summary-right-column">
+            <div id="summary-content-wrapper">
+                <h1>Here's Your Consult Summary.</h1>
+                <p class="artist-summary">This was a great chat. It's clear you've put a ton of thought into this. This summary captures all your ideas—it's your personal blueprint.</p>
+                <h2>Your Thought Process</h2>
+                <div id="summary-answers-container"></div>
+                <h2>Your Vision for the Future</h2>
+                <div class="summary-item">
+                    <p id="summary-future-choice" class="summary-a"></p>
+                </div>
+                <button id="print-btn">[ Save This Summary (Print) ]</button>
+                <p class="artist-bye">Alright, see you at the studio for the real thing. Cheers.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
